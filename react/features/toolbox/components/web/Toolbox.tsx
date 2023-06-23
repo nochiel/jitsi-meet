@@ -82,6 +82,8 @@ import VideoQualityButton from '../../../video-quality/components/VideoQualityBu
 import VideoQualityDialog from '../../../video-quality/components/VideoQualityDialog.web';
 import VideoBackgroundButton from '../../../virtual-background/components/VideoBackgroundButton';
 import { iAmVisitor } from '../../../visitors/functions';
+import WalletButton from '../../../wallet/components/web/WalletButton';
+import { isWalletButtonVisible } from '../../../wallet/functions';
 import WhiteboardButton from '../../../whiteboard/components/web/WhiteboardButton';
 import { isWhiteboardButtonVisible } from '../../../whiteboard/functions';
 import {
@@ -323,6 +325,11 @@ interface IProps extends WithTranslation {
      * Flag showing whether toolbar is visible.
      */
     _visible: boolean;
+
+    /**
+     * Whether the whiteboard is visible.
+     */
+    _walletEnabled: boolean;
 
     /**
      * Whether the whiteboard is visible.
@@ -732,6 +739,7 @@ class Toolbox extends Component<IProps> {
             _reactionsEnabled,
             _screenSharing,
             _shortcutsEnabled,
+            _walletEnabled,
             _whiteboardEnabled
         } = this.props;
 
@@ -875,6 +883,11 @@ class Toolbox extends Component<IProps> {
             group: 3
         };
 
+        const wallet = _walletEnabled && {
+            key: 'wallet',
+            Content: WalletButton,
+            group: 3
+        };
 
         const whiteboard = _whiteboardEnabled && {
             key: 'whiteboard',
@@ -1626,6 +1639,8 @@ function _mapStateToProps(state: IReduxState, ownProps: any) {
         _toolbarButtons: toolbarButtons,
         _virtualSource: state['features/virtual-background'].virtualSource,
         _visible: isToolboxVisible(state),
+        // _walletEnabled: isWalletButtonVisible(state),
+        _walletEnabled: Boolean(true),
         _whiteboardEnabled: isWhiteboardButtonVisible(state)
     };
 }

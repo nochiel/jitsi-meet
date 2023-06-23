@@ -230,5 +230,6 @@ export default [
     'videoQuality',
     'webrtcIceTcpDisable',
     'webrtcIceUdpDisable',
+    'wallet.enabled',
     'whiteboard.enabled'
 ].concat(extraConfigWhitelist);

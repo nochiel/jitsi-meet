@@ -569,6 +569,10 @@ export interface IConfig {
         customUrl?: string;
         disabled?: boolean;
     };
+    wallet?: {
+        walletServerBaseUrl?: string;
+        enabled?: boolean;
+    };
     whiteboard?: {
         collabServerBaseUrl?: string;
         enabled?: boolean;
