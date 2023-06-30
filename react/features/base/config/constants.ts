@@ -48,6 +48,7 @@ export const TOOLBAR_BUTTONS = [
     'tileview',
     'toggle-camera',
     'videoquality',
+    'wallet',
     'whiteboard'
 ];
 

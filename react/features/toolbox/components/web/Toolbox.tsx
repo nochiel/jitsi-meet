@@ -82,8 +82,8 @@ import VideoQualityButton from '../../../video-quality/components/VideoQualityBu
 import VideoQualityDialog from '../../../video-quality/components/VideoQualityDialog.web';
 import VideoBackgroundButton from '../../../virtual-background/components/VideoBackgroundButton';
 import { iAmVisitor } from '../../../visitors/functions';
-import WalletButton from '../../../wallet/components/web/WalletButton';
-import { isWalletButtonVisible } from '../../../wallet/functions';
+import WalletButton from '../../../wallet.old/components/web/WalletButton';
+import { isWalletButtonVisible } from '../../../wallet.old/functions';
 import WhiteboardButton from '../../../whiteboard/components/web/WhiteboardButton';
 import { isWhiteboardButtonVisible } from '../../../whiteboard/functions';
 import {
@@ -327,7 +327,7 @@ interface IProps extends WithTranslation {
     _visible: boolean;
 
     /**
-     * Whether the whiteboard is visible.
+     * Whether the wallet is visible.
      */
     _walletEnabled: boolean;
 
@@ -883,7 +883,7 @@ class Toolbox extends Component<IProps> {
             group: 3
         };
 
-        const wallet = _walletEnabled && {
+        const wallet = {
             key: 'wallet',
             Content: WalletButton,
             group: 3
@@ -984,6 +984,7 @@ class Toolbox extends Component<IProps> {
             shareVideo,
             shareAudio,
             noiseSuppression,
+            wallet,
             whiteboard,
             etherpad,
             virtualBackground,
@@ -1264,6 +1265,14 @@ class Toolbox extends Component<IProps> {
         this._doToggleScreenshare();
     }
 
+    _onShortcutWallet() {
+        sendAnalytics(createShortcutEvent(
+            'wallet'
+        ));
+
+        this._doToggleWallet();
+    }
+
     /**
      * Creates an analytics keyboard shortcut event and dispatches an action for
      * toggling speaker stats.
@@ -1277,6 +1286,17 @@ class Toolbox extends Component<IProps> {
         ));
 
         this._doToggleSpekearStats();
+    }
+
+    // TODO(nochiel) Action to toggle wallet dialog.
+    _doToggleWallet() {
+        const { dispatch } = this.props;
+
+        /*
+        dispatch(toggleDialog(SpeakerStats, {
+            conference: APP.conference
+        }));
+        */
     }
 
     /**
@@ -1639,8 +1659,7 @@ function _mapStateToProps(state: IReduxState, ownProps: any) {
         _toolbarButtons: toolbarButtons,
         _virtualSource: state['features/virtual-background'].virtualSource,
         _visible: isToolboxVisible(state),
-        // _walletEnabled: isWalletButtonVisible(state),
-        _walletEnabled: Boolean(true),
+        // _walletEnabled: isWalletButtonVisible(state),  // TODO(nochiel)
         _whiteboardEnabled: isWhiteboardButtonVisible(state)
     };
 }

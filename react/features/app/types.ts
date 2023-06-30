@@ -81,7 +81,7 @@ import { IVideoSipGW } from '../videosipgw/reducer';
 import { IVirtualBackground } from '../virtual-background/reducer';
 import { IVisitorsState } from '../visitors/reducer';
 import { IWebHid } from '../web-hid/reducer';
-import { IWalletState } from '../wallet/reducer';
+import { IWalletState } from '../wallet.old/reducer';
 import { IWhiteboardState } from '../whiteboard/reducer';
 
 export interface IStore {
@@ -161,6 +161,7 @@ export interface IReduxState {
     'features/settings': ISettingsState;
     'features/share-room': IShareRoomState;
     'features/shared-video': ISharedVideoState;
+    'features/wallet.old': IWalletState;
     'features/speaker-stats': ISpeakerStatsState;
     'features/subtitles': ISubtitlesState;
     'features/talk-while-muted': ITalkWhileMutedState;
@@ -174,7 +175,6 @@ export interface IReduxState {
     'features/virtual-background': IVirtualBackground;
     'features/visitors': IVisitorsState;
     'features/web-hid': IWebHid;
-    'features/wallet': IWalletState;
     'features/whiteboard': IWhiteboardState;
 }
 
