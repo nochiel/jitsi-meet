@@ -44,8 +44,9 @@ export const isWalletOpen = (state: IReduxState): boolean => getWalletState(stat
  * @param {IReduxState} state - The state from the Redux store.
  * @returns {boolean}
  */
+
 export const isWalletButtonVisible = (state: IReduxState): boolean =>
-    isWalletEnabled(state) && (isLocalParticipantModerator(state) || isWalletOpen(state));
+    isWalletEnabled(state);
 
 /**
  * Indicates whether the wallet is present as a meeting participant.
@@ -86,21 +87,3 @@ export const getWalletServerUrl = (state: IReduxState): string | undefined => {
     return appendURLParam(walletServerBaseUrl, 'room', room);
 };
 
-/**
- * Whether the wallet is visible on stage.
- *
- * @param {IReduxState} state - The state from the Redux store.
- * @returns {boolean}
- */
-export const isWalletVisible = (state: IReduxState): boolean =>
-    getPinnedParticipant(state)?.id === WALLET_ID
-    || state['features/large-video'].participantId === WALLET_ID;
-
-/**
-* Indicates whether the wallet is accessible to a participant that has a moderator role.
-*
-* @param {IReduxState} state - The state from the Redux store.
-* @returns {boolean}
-*/
-export const isWalletAllowed = (state: IReduxState): boolean =>
-    isWalletEnabled(state) && isLocalParticipantModerator(state);

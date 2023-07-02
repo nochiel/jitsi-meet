@@ -63,7 +63,7 @@ class WalletButton extends AbstractButton<IProps> {
  */
 function _mapStateToProps(state: IReduxState) {
     return {
-        _toggled: isWalletVisible(state)
+        _toggled: isWalletOpen(state)
     };
 }
 

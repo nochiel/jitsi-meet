@@ -14,12 +14,11 @@ import { IWalletAction } from './reducer';
  *     collabDetails: { roomId: string, roomKey: string }
  * }}
  */
-export const setupWallet = ({ collabDetails }: {
-    collabDetails: { roomId: string; roomKey: string; };
-}): IWalletAction => {
+export const setupWallet = (roomId?: string, participantId?: number): IWalletAction => {
     return {
         type: SETUP_WALLET,
-        collabDetails
+        roomId: roomId,
+        participantId: participantId
     };
 };
 

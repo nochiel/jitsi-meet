@@ -20,31 +20,46 @@ import { getCollabDetails, getWalletServerUrl, isWalletPresent } from './functio
 const focusWallet = (store: IStore) => {}
 
 MiddlewareRegistry.register((store: IStore) => (next: Function) => async (action: AnyAction) => {
+
     const { dispatch, getState } = store;
     const state = getState();
     const conference = getCurrentConference(state);
+    const participantId = -1;       // TODO(nochiel) 
 
     switch (action.type) {
         case SET_WALLET_OPEN: {
+
             const roomId = getCurrentRoomId(state);
+            if (state.roomId != roomId) {
+                focusWallet(store);
+                dispatch(setupWallet(roomId, participantId))
+                conference?.getMetadataHandler().setMetadata(WALLET_ID, {
+                     roomId, 
+                     participantId 
+                    });      // TODO(nochiel)
+                // raiseWalletNotification(WalletStatus.INSTANTIATED);      // TODO(nochiel)
+
+                return; 
+            }
 
             // TODO(nochiel) Handle initialisation of the wallet if this is the first time opened.
 
             if (action.isOpen) {
-                focusWallet(store);     // TODO(nochiel)
-                dispatch(setupWallet({}));
+                focusWallet(store);
+                dispatch(setupWallet(roomId));
             }
 
         break;
         }
         case RESET_WALLET: {
-            raiseWalletNotification(WalletStatus.RESET)
+            // raiseWalletNotification(WalletStatus.RESET)
 
             break;
         }
     }
 
-})
+    return next(action);
+});
 
 function raiseWalletNotification(status: WalletStatus) {
 
@@ -67,9 +82,7 @@ StateListenerRegistry.register(
         if (conference && !previousConference) {
             conference.on(JitsiConferenceEvents.METADATA_UPDATED, (metadata: any) => {
                 if (metadata[WALLET_ID]) {
-                    dispatch(setupWallet({
-                        collabDetails: metadata[WALLET_ID].collabDetails
-                    }));
+                    dispatch(setupWallet(metadata[WALLET_ID].roomId, metadata[WALLET_ID].participantId));
                     dispatch(setWalletOpen(true));
                 }
             });

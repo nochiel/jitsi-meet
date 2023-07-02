@@ -82,8 +82,8 @@ import VideoQualityButton from '../../../video-quality/components/VideoQualityBu
 import VideoQualityDialog from '../../../video-quality/components/VideoQualityDialog.web';
 import VideoBackgroundButton from '../../../virtual-background/components/VideoBackgroundButton';
 import { iAmVisitor } from '../../../visitors/functions';
-import WalletButton from '../../../wallet.old/components/web/WalletButton';
-import { isWalletButtonVisible } from '../../../wallet.old/functions';
+import WalletButton from '../../../wallet/components/web/WalletButton';
+import { isWalletButtonVisible } from '../../../wallet/functions';
 import WhiteboardButton from '../../../whiteboard/components/web/WhiteboardButton';
 import { isWhiteboardButtonVisible } from '../../../whiteboard/functions';
 import {
@@ -739,7 +739,6 @@ class Toolbox extends Component<IProps> {
             _reactionsEnabled,
             _screenSharing,
             _shortcutsEnabled,
-            _walletEnabled,
             _whiteboardEnabled
         } = this.props;
 
