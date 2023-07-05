@@ -1,6 +1,6 @@
 import md5 from 'js-md5';
 
-import { getPinnedParticipant } from '../../features/base/participants/functions';
+import { getPinnedParticipant } from '../base/participants/functions';
 import { IReduxState } from '../app/types';
 import { getCurrentConference } from '../base/conference/functions';
 import { getRemoteParticipants, isLocalParticipantModerator } from '../base/participants/functions';
@@ -87,3 +87,5 @@ export const getWalletServerUrl = (state: IReduxState): string | undefined => {
     return appendURLParam(walletServerBaseUrl, 'room', room);
 };
 
+// TODO(nochiel)
+export function _getPayableAddresses(roomId: number) {}

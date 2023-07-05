@@ -83,7 +83,7 @@ StateListenerRegistry.register(
             conference.on(JitsiConferenceEvents.METADATA_UPDATED, (metadata: any) => {
                 if (metadata[WALLET_ID]) {
                     dispatch(setupWallet(metadata[WALLET_ID].roomId, metadata[WALLET_ID].participantId));
-                    dispatch(setWalletOpen(true));
+                    dispatch(beginWalletOpen(true));
                 }
             });
         }

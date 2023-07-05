@@ -1144,7 +1144,6 @@
             "hangup": "Leave the meeting",
             "heading": "Toolbar",
             "help": "Help",
-            "hideWallet": "Hide wallet",
             "hideWhiteboard": "Hide whiteboard",
             "invite": "Invite people",
             "kick": "Kick participant",
@@ -1186,7 +1185,7 @@
             "sharedvideo": "Share video",
             "shortcuts": "Toggle shortcuts",
             "show": "Show on stage",
-            "showWallet": "Show wallet",
+            "wallet": "Open wallet",
             "showWhiteboard": "Show whiteboard",
             "silence": "Silence",
             "speakerStats": "Toggle participants statistics",
@@ -1232,7 +1231,6 @@
         "giphy": "Toggle GIPHY menu",
         "hangup": "Leave the meeting",
         "help": "Help",
-        "hideWallet": "Hide wallet",
         "hideWhiteboard": "Hide whiteboard",
         "invite": "Invite people",
         "joinBreakoutRoom": "Join breakout room",
@@ -1281,7 +1279,7 @@
         "shareaudio": "Share audio",
         "sharedvideo": "Share video",
         "shortcuts": "View shortcuts",
-        "showWallet": "Show wallet",
+        "wallet": "Open wallet",
         "showWhiteboard": "Show whiteboard",
         "silence": "Silence",
         "speakerStats": "Participants stats",
@@ -1419,6 +1417,13 @@
         }
     },
     "volumeSlider": "Volume slider",
+    "wallet": {
+        "title": "Your Jitsi wallet for this conference",
+        "participants": "Meeting Participants",
+        "giveTip": "Give someone a tip",
+        "streamPayment": "Stream payments to someone",
+        "copyAddress": "Copy address to clipboard"
+    },       
     "welcomepage": {
         "accessibilityLabel": {
             "join": "Tap to join",

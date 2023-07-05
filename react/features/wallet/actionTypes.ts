@@ -22,4 +22,4 @@ export const RESET_WALLET: string = 'RESET_WALLET';
  *      isOpen
  * }}
  */
-export const SET_WALLET_OPEN: string = 'SET_WALLET_OPEN';
+export const BEGIN_WALLET_OPEN: string = 'BEGIN_WALLET_OPEN:';

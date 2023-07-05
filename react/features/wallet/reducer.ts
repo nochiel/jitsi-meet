@@ -39,7 +39,7 @@ ReducerRegistry.register(
             case SETUP_WALLET: {    // FIXME(nochiel) When is this Action ever called?
                 return {
                     ...state,
-                    isOpen: true
+                    isOpen: false
                 };
             }
             case RESET_WALLET:

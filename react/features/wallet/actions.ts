@@ -1,7 +1,7 @@
 import {
     RESET_WALLET,
     SETUP_WALLET,
-    SET_WALLET_OPEN
+    BEGIN_WALLET_OPEN
 } from './actionTypes';
 import { IWalletAction } from './reducer';
 
@@ -43,9 +43,9 @@ export const resetWallet = (): IWalletAction => {
  *      isOpen
  * }}
  */
-export const setWalletOpen = (isOpen: boolean): IWalletAction => {
+export const beginWalletOpen = (isOpen: boolean): IWalletAction => {
     return {
-        type: SET_WALLET_OPEN,
+        type: BEGIN_WALLET_OPEN,
         isOpen
     };
 };
