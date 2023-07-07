@@ -27,31 +27,28 @@ MiddlewareRegistry.register((store: IStore) => (next: Function) => async (action
     const participantId = -1;       // TODO(nochiel) 
 
     switch (action.type) {
-        case SET_WALLET_OPEN: {
+        case BEGIN_WALLET_OPEN: {
 
             const roomId = getCurrentRoomId(state);
             if (state.roomId != roomId) {
-                focusWallet(store);
                 dispatch(setupWallet(roomId, participantId))
                 conference?.getMetadataHandler().setMetadata(WALLET_ID, {
                      roomId, 
                      participantId 
                     });      // TODO(nochiel)
-                // raiseWalletNotification(WalletStatus.INSTANTIATED);      // TODO(nochiel)
-
-                return; 
             }
 
             // TODO(nochiel) Handle initialisation of the wallet if this is the first time opened.
-
-            if (action.isOpen) {
-                focusWallet(store);
-                dispatch(setupWallet(roomId));
-            }
+            dispatch(openDialog(WalletDialog));
 
         break;
         }
         case RESET_WALLET: {
+                conference?.getMetadataHandler().setMetadata(WALLET_ID, {
+                     roomId: "-1", 
+                     participantId: -1,
+                     isOpen: false,
+                    });      // TODO(nochiel)
             // raiseWalletNotification(WalletStatus.RESET)
 
             break;
