@@ -5,3 +5,8 @@ export enum WalletStatus {
     RESET = 'RESET',
     SHOWN = 'SHOWN'
 }
+
+export interface PayableAddress {
+    participantId: number;
+    address: string;
+}

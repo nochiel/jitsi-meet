@@ -45,10 +45,11 @@ MiddlewareRegistry.register((store: IStore) => (next: Function) => async (action
         }
         case RESET_WALLET: {
                 conference?.getMetadataHandler().setMetadata(WALLET_ID, {
-                     roomId: "-1", 
-                     participantId: -1,
+                     conferenceId: conferenceId, 
+                     participantId: participant?.id,
                      isOpen: false,
-                    });      // TODO(nochiel)
+                    });      
+                // TODO(nochiel)
             // raiseWalletNotification(WalletStatus.RESET)
 
             break;

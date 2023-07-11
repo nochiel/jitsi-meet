@@ -15,7 +15,7 @@ interface IProps extends WithTranslation {
 }
 
 
-class Balance extends Component<IProps> {
+class Address extends Component<IProps> {
 
     constructor(props: IProps) {
         super(props);
@@ -23,11 +23,6 @@ class Balance extends Component<IProps> {
         this._onCopyText = this._onCopyText.bind(this);
     }
 
-    // TODO(nochiel)
-    _formatBalanceAmount(amount: number, currency: string) {
-        // TODO(nochiel) Add currency type e.g. sats, btc, eth.
-        return amount;
-     }
 
     _onCopyText() {
         const { conferenceId, balance, currency, t } = this.props;     // TODO(nochiel) FINDOUT What is `t`? translate()?
@@ -69,4 +64,4 @@ class Balance extends Component<IProps> {
 
 }
 
-export default translate(Balance);
+export default translate(Address);

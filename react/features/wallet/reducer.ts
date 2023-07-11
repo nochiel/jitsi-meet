@@ -1,27 +1,27 @@
 import ReducerRegistry from '../base/redux/ReducerRegistry';
 
 import { RESET_WALLET, SETUP_WALLET } from './actionTypes';
+import { PayableAddress } from '../../types';
 
 export interface IWalletState {
 
     /**
      * The wallet collaboration details.
      */
-    roomId?: string;   // TODO(nochiel)
+    conferenceId?: string;   // TODO(nochiel)
 
-    participantId?: int     // TODO(nochiel) This should be a list of participants?
+    participantId?: string;     
 
+    addresses?: PayableAddress[];
     /**
      * The indicator which determines whether the wallet is open.
      *
      * @type {boolean}
      */
-    isOpen: boolean;
 }
 
 const DEFAULT_STATE: IWalletState = {
-    roomId: '',
-    isOpen: false
+    addresses: [],
 };
 
 export interface IWalletAction extends Partial<IWalletState> {
@@ -39,7 +39,8 @@ ReducerRegistry.register(
             case SETUP_WALLET: {    // FIXME(nochiel) When is this Action ever called?
                 return {
                     ...state,
-                    isOpen: false
+                    conferenceId: action.conferenceId,
+                    participantId: action.participantId
                 };
             }
             case RESET_WALLET:

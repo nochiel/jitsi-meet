@@ -21,7 +21,7 @@ interface IProps {
 const useStyles = makeStyles()(theme => {
     return {
         container: {
-            '& .info-label': {
+            '& .balance-label': {
                 ...withPixelLineHeight(theme.typography.bodyLongBold)
             }
         },

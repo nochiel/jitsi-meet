@@ -88,4 +88,4 @@ export const getWalletServerUrl = (state: IReduxState): string | undefined => {
 };
 
 // TODO(nochiel)
-export function _getPayableAddresses(roomId: number) {}
+export function getPayableAddresses(conferenceId: number) {}
